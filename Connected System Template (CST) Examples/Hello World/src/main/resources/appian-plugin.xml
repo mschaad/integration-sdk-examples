@@ -1,16 +1,16 @@
-<appian-plugin name="My Corp Connected System - Hello World" key="hello-world">
+<appian-plugin name="My Corp Connected System - .." key="..">
 
   <plugin-info>
-    <description>My Corp Connected System - Hello World</description>
+    <description>My Corp Connected System - ..</description>
     <vendor name="My Corporation" url="http://www.mycorp.com"/>
     <version>1.0.0.0</version>
     <application-version min="7.6.0.4"/>
   </plugin-info>
 
-  <connected-system-template key="HelloWorldConnectedSystem" name="HelloWorldConnectedSystem"
+  <connected-system-template key="..ConnectedSystem" name="..ConnectedSystem"
                              class="com.mycorp.helloworld.templates.HelloWorldConnectedSystemTemplate">
 
-    <integration-template key="HelloWorldIntegrationTemplate" name="HelloWorldIntegrationTemplate"
+    <integration-template key="..IntegrationTemplate" name="..IntegrationTemplate"
                           class="com.mycorp.helloworld.templates.HelloWorldIntegrationTemplate" />
 
   </connected-system-template>
