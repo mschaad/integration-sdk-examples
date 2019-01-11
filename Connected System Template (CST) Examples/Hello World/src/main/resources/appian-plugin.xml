@@ -1,4 +1,4 @@
-<appian-plugin name="My Corp Connected System - .." key="..">
+<appian-plugin name="My Corp Connected System - ." key=".">
 
   <plugin-info>
     <description>My Corp Connected System - ..</description>
@@ -7,10 +7,10 @@
     <application-version min="7.6.0.4"/>
   </plugin-info>
 
-  <connected-system-template key="..ConnectedSystem" name="..ConnectedSystem"
+  <connected-system-template key=".ConnectedSystem" name=".ConnectedSystem"
                              class="com.mycorp.helloworld.templates.HelloWorldConnectedSystemTemplate">
 
-    <integration-template key="..IntegrationTemplate" name="..IntegrationTemplate"
+    <integration-template key=".IntegrationTemplate" name=".IntegrationTemplate"
                           class="com.mycorp.helloworld.templates.HelloWorldIntegrationTemplate" />
 
   </connected-system-template>
