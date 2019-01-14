@@ -5,7 +5,7 @@ import com.appian.connectedsystems.simplified.sdk.configuration.SimpleConfigurat
 import com.appian.connectedsystems.templateframework.sdk.ExecutionContext;
 import com.appian.connectedsystems.templateframework.sdk.TemplateId;
 
-@TemplateId(name="Slash/ConnectedSystemTemplate")
+@TemplateId(name="SlashConnectedSystemTemplate")
 public class HelloWorldConnectedSystemTemplate extends SimpleConnectedSystemTemplate {
 
   public static final String CS_PROP_KEY = "csProp";
