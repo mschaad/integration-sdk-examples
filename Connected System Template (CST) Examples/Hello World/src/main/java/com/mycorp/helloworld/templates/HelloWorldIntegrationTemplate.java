@@ -16,7 +16,7 @@ import com.appian.connectedsystems.templateframework.sdk.metadata.IntegrationTem
 import com.appian.connectedsystems.templateframework.sdk.metadata.IntegrationTemplateType;
 
 // Must provide an integration id. This value need only be unique for this connected system
-@TemplateId(name="null\0byteIntegrationTemplate")
+@TemplateId(name="nullbyteIntegrationTemplate")
 // Set template type to READ since this integration does not have side effects
 @IntegrationTemplateType(IntegrationTemplateRequestPolicy.READ)
 public class HelloWorldIntegrationTemplate extends SimpleIntegrationTemplate {
