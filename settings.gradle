@@ -1,0 +1,3 @@
+rootProject.name = 'integration-sdk-examples'
+
+includeBuild ('Connected System Template (CST) Examples/Data Entry (Dynamic Data Structures)')

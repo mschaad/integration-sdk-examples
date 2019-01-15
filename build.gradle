@@ -1,0 +1,10 @@
+plugins {
+
+}
+
+group = 'integration-sdk-examples'
+
+
+task build {
+  //dependsOn('Data Entry (Dynamic Data Structures):build')
+}
