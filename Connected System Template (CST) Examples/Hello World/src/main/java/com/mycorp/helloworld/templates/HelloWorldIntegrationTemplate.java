@@ -43,30 +43,13 @@ public class HelloWorldIntegrationTemplate extends SimpleIntegrationTemplate {
       SimpleConfiguration integrationConfiguration,
       SimpleConfiguration connectedSystemConfiguration,
       ExecutionContext executionContext) {
-    Map<String,Object> requestDiagnostic = new HashMap<>();
-    String csValue = connectedSystemConfiguration.getValue(CS_PROP_KEY);
-    requestDiagnostic.put("csValue", csValue);
-    String integrationValue = integrationConfiguration.getValue(INTEGRATION_PROP_KEY);
-    requestDiagnostic.put("integrationValue", integrationValue);
+
     Map<String,Object> result = new HashMap<>();
 
-    // Important for debugging to capture the amount of time it takes to interact
-    // with the external system. Since this integration doesn't interact
-    // with an external system, we'll just log the calculation time of concatenating the strings
-    final long start = System.currentTimeMillis();
-    result.put("hello", "world");
-    result.put("concat", csValue + integrationValue);
-    final long end = System.currentTimeMillis();
-
-    final long executionTime = end - start;
-    final IntegrationDesignerDiagnostic diagnostic = IntegrationDesignerDiagnostic.builder()
-        .addExecutionTimeDiagnostic(executionTime)
-        .addRequestDiagnostic(requestDiagnostic)
-        .build();
+    result.put("pojo", new Pojo());
 
     return IntegrationResponse
         .forSuccess(result)
-        .withDiagnostic(diagnostic)
         .build();
   }
 }
