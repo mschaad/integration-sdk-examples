@@ -1,7 +1,7 @@
-<appian-plugin name="My Corp Connected System - Hello World" key="com.mycorp.helloworld">
+<appian-plugin name="My Corp Connected System - Hidden" key="com.mycorp.helloworld" system="true">
 
   <plugin-info>
-    <description>My Corp Connected System - Hello World</description>
+    <description>My Corp Connected System - Hidden</description>
     <vendor name="My Corporation" url="http://www.mycorp.com"/>
     <version>1.0.0.0</version>
     <application-version min="7.6.0.4"/>
