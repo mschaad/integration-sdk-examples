@@ -1,4 +1,4 @@
-<appian-plugin name="My Corp Connected System - Hidden" key="com.mycorp.helloworld" system="true">
+<appian-plugin name="My Corp Connected System - Hidden" key="com.mycorp.hidden" system="true">
 
   <plugin-info>
     <description>My Corp Connected System - Hidden</description>
