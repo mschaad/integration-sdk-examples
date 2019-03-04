@@ -10,6 +10,7 @@ import com.appian.connectedsystems.simplified.sdk.configuration.SimpleConfigurat
 import com.appian.connectedsystems.templateframework.sdk.ExecutionContext;
 import com.appian.connectedsystems.templateframework.sdk.IntegrationResponse;
 import com.appian.connectedsystems.templateframework.sdk.TemplateId;
+import com.appian.connectedsystems.templateframework.sdk.configuration.LocalTypeDescriptor;
 import com.appian.connectedsystems.templateframework.sdk.configuration.PropertyPath;
 import com.appian.connectedsystems.templateframework.sdk.diagnostics.IntegrationDesignerDiagnostic;
 import com.appian.connectedsystems.templateframework.sdk.metadata.IntegrationTemplateRequestPolicy;
@@ -18,7 +19,7 @@ import com.appian.connectedsystems.templateframework.sdk.metadata.IntegrationTem
 // Must provide an integration id. This value need only be unique for this connected system
 @TemplateId(name="HelloWorldIntegrationTemplate")
 // Set template type to READ since this integration does not have side effects
-@IntegrationTemplateType(IntegrationTemplateRequestPolicy.READ)
+@IntegrationTemplateType(IntegrationTemplateRequestPolicy.READ_AND_WRITE)
 public class HelloWorldIntegrationTemplate extends SimpleIntegrationTemplate {
 
   public static final String INTEGRATION_PROP_KEY = "intProp";
@@ -30,12 +31,26 @@ public class HelloWorldIntegrationTemplate extends SimpleIntegrationTemplate {
     PropertyPath propertyPath,
     ExecutionContext executionContext) {
     return integrationConfiguration.setProperties(
-        // Make sure you make constants for all keys so that you can easily
-        // access the values during execution
-        textProperty(INTEGRATION_PROP_KEY).label("Text Property")
-            .isRequired(true)
-            .description("This will be concatenated with the connected system text property on execute")
-            .build());
+        textProperty("p0")
+            .label("P0")
+        .build(),
+        localTypeProperty(
+            LocalTypeDescriptor.builder()
+                .name("ComplexType")
+                .properties(
+                    textProperty("p1")
+                        .label("P1")
+                        .build(),
+                    textProperty("p2")
+                        .label("P2")
+                        .build()
+                )
+                .build(),
+            "MyComplexProperty"
+        )
+        .isExpressionable(true)
+        .build()
+    );
   }
 
   @Override
