@@ -2,6 +2,9 @@ package com.mycorp.helloworld.templates;
 
 import static com.mycorp.helloworld.templates.HelloWorldConnectedSystemTemplate.CS_PROP_KEY;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,6 +13,8 @@ import com.appian.connectedsystems.simplified.sdk.configuration.SimpleConfigurat
 import com.appian.connectedsystems.templateframework.sdk.ExecutionContext;
 import com.appian.connectedsystems.templateframework.sdk.IntegrationResponse;
 import com.appian.connectedsystems.templateframework.sdk.TemplateId;
+import com.appian.connectedsystems.templateframework.sdk.configuration.Document;
+import com.appian.connectedsystems.templateframework.sdk.configuration.DocumentLocationPropertyDescriptor;
 import com.appian.connectedsystems.templateframework.sdk.configuration.PropertyPath;
 import com.appian.connectedsystems.templateframework.sdk.diagnostics.IntegrationDesignerDiagnostic;
 import com.appian.connectedsystems.templateframework.sdk.metadata.IntegrationTemplateRequestPolicy;
@@ -32,10 +37,13 @@ public class HelloWorldIntegrationTemplate extends SimpleIntegrationTemplate {
     return integrationConfiguration.setProperties(
         // Make sure you make constants for all keys so that you can easily
         // access the values during execution
-        textProperty(INTEGRATION_PROP_KEY).label("Text Property")
+        DocumentLocationPropertyDescriptor.builder()
+            .key(INTEGRATION_PROP_KEY)
+            .label("Document Location")
             .isRequired(true)
-            .description("This will be concatenated with the connected system text property on execute")
-            .build());
+            .description("This will become a folder id during execute")
+            .build()
+    );
   }
 
   @Override
@@ -53,9 +61,11 @@ public class HelloWorldIntegrationTemplate extends SimpleIntegrationTemplate {
     // Important for debugging to capture the amount of time it takes to interact
     // with the external system. Since this integration doesn't interact
     // with an external system, we'll just log the calculation time of concatenating the strings
+    InputStream stream = new ByteArrayInputStream("hello world".getBytes(StandardCharsets.UTF_8));
+
     final long start = System.currentTimeMillis();
-    result.put("hello", "world");
-    result.put("concat", csValue + integrationValue);
+
+    result.put("documentToStore", new Document(1, stream, "txt", "hello-world", 11, 1L));
     final long end = System.currentTimeMillis();
 
     final long executionTime = end - start;
