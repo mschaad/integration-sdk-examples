@@ -54,7 +54,8 @@ public class HelloWorldIntegrationTemplate extends SimpleIntegrationTemplate {
     Map<String,Object> requestDiagnostic = new HashMap<>();
     String csValue = connectedSystemConfiguration.getValue(CS_PROP_KEY);
     requestDiagnostic.put("csValue", csValue);
-    String integrationValue = integrationConfiguration.getValue(INTEGRATION_PROP_KEY);
+
+    int integrationValue = integrationConfiguration.getValue(INTEGRATION_PROP_KEY);
     requestDiagnostic.put("integrationValue", integrationValue);
     Map<String,Object> result = new HashMap<>();
 
